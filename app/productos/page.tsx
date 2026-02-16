@@ -31,13 +31,14 @@ const ProductosPage = () => {
       }
     )
 
-    if (sentinelRef.current) {
-      observer.observe(sentinelRef.current)
+    const sentinel = sentinelRef.current
+    if (sentinel) {
+      observer.observe(sentinel)
     }
 
     return () => {
-      if (sentinelRef.current) {
-        observer.unobserve(sentinelRef.current)
+      if (sentinel) {
+        observer.unobserve(sentinel)
       }
     }
   }, [visibleProducts, isLoading])
